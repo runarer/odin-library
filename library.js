@@ -1,0 +1,57 @@
+function Book(title,author,pages,completed) {
+    if(!new.target) {
+        throw Error("Use the 'new' operator!");
+    }
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.completed = this.completed;
+}
+
+Book.prototype.completed = function(completed) {
+    this.completed = completed;
+};
+
+const Books = new Array();
+
+Books.push(new Book("Piranesi","Susanna Clarke", 272, false));
+Books.push(new Book("Gardens of the moon","Steven Erikson", 712, false));
+Books.push(new Book("Deadhouse gates","Steven Erikson", 943, false));
+
+// Get table
+const tableContent = document.getElementById("book-table-content");
+// console.log(tableContent);
+
+Books.forEach( function(book) {
+    // New row
+    console.log(book);
+
+    const newRow = document.createElement("tr");
+
+    //Book Title
+    const bookTitle = document.createElement("td");
+    bookTitle.textContent = book.title;
+    newRow.appendChild(bookTitle);
+
+    //Book author
+    const bookAuthor = document.createElement("td");
+    bookAuthor.textContent = book.author;
+    newRow.appendChild(bookAuthor);
+
+    //Book pages
+    const bookPages = document.createElement("td");
+    bookPages.textContent = book.pages;
+    newRow.appendChild(bookPages);
+
+    // //Book completed?
+    const bookCompletedTd = document.createElement("td");
+    const bookCompleted = document.createElement("input")
+    bookCompleted.type = "checkbox";
+    // bookCompleted.value = book.completed;
+    bookCompletedTd.appendChild(bookCompleted);
+    newRow.appendChild(bookCompletedTd);
+    
+
+    //Add Row
+    tableContent.appendChild(newRow);
+});
