@@ -1,0 +1,93 @@
+.library {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+input:focus-visible {
+    
+}
+
+.add-book {
+    display: flex;
+    flex-direction: column;
+    width: 40ch;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding:20px;
+    margin: 20px;
+    gap:5px;
+}
+
+#book-table {
+    padding: 2px;
+    margin: 20px;
+    width: 600px;
+    border-collapse: collapse;
+}
+
+td {
+    
+    padding: 2px 5px;
+}
+
+#header-name,
+#header-author {
+    text-align: start;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;     
+}
+
+#header-pages,
+#header-completed {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+#header-pages {
+    border-right: 1px solid black;
+    width: 6ch;
+}
+
+#header-completed {
+    width: 13ch;
+}
+
+.book-pages {
+    text-align: end;
+}
+
+.book-completed {
+    text-align: center;
+}
+
+#name,
+#author {
+    width: 30ch;
+}
+
+form button {
+    width: 7ch;    
+}
+
+#toggle-add-book {
+    width: 12ch;
+    margin-left: 10ch;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+    padding-left: 1ch;
+    padding-right: 1ch;
+    width: 4ch;
+    text-align: right;
+}

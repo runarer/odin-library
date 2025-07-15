@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="library.js" defer></script>
+</head>
+<body>
+    <div class="library">
+        <form class="add-book" action="" method="post">
+            <label for="name">Name
+            <input type="text" name="name" id="name" required></label>
+            <label for="author">Author
+            <input type="text" name="author" id="author" required></label>
+            <label for="pages">Pages
+            <input type="number" name="pages" id="pages" min="1" max="2500" required></label>
+            <label for="read">Completed?
+            <input type="checkbox" name="read" id="read required"></label>
+            <div>
+                <button type="button" id="add">Add</button>
+                <button type="reset" id="cancel">Cancel</button>
+            </div>
+        </form>
+        <button type="button" id="toggle-add-book">Add Book</button>
+        <table id="book-table">
+            <thead>
+                <td id="header-name">Name</td>
+                <td id="header-author">Author</td>
+                <td id="header-pages">Pages</td>
+                <td id="header-completed">Completed</td>
+            </thead>
+            <tbody id="book-table-content">
+                <tr>
+                    <td class="book-name">Crooked Kingdom</td>
+                    <td class="book-author">Leigh Bardugo</td>
+                    <td class="book-pages">536</td>
+                    <td class="book-completed"><input type="checkbox" name="read" id="book1" value="false"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
