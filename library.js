@@ -1,3 +1,5 @@
+const myLibrary = [];
+
 function Book(title,author,pages,completed) {
     if(!new.target) {
         throw Error("Use the 'new' operator!");
@@ -11,18 +13,20 @@ function Book(title,author,pages,completed) {
 Book.prototype.completed = function(completed) {
     this.completed = completed;
 };
+    
+function addBookToLibrary(title,author,pages,completed) {
+    myLibrary.push(new Book(title,author, pages, completed));
+}
 
-const Books = new Array();
-
-Books.push(new Book("Piranesi","Susanna Clarke", 272, false));
-Books.push(new Book("Gardens of the moon","Steven Erikson", 712, false));
-Books.push(new Book("Deadhouse gates","Steven Erikson", 943, false));
+addBookToLibrary("Piranesi","Susanna Clarke", 272, false);
+addBookToLibrary("Gardens of the moon","Steven Erikson", 712, false);
+addBookToLibrary("Deadhouse gates","Steven Erikson", 943, false);
 
 // Get table
 const tableContent = document.getElementById("book-table-content");
 // console.log(tableContent);
 
-Books.forEach( function(book) {
+myLibrary.forEach( function(book) {
     // New row
     console.log(book);
 
