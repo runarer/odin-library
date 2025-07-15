@@ -4,10 +4,11 @@ function Book(title,author,pages,completed) {
     if(!new.target) {
         throw Error("Use the 'new' operator!");
     }
+    this.id = crypto.randomUUID();
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.completed = this.completed;
+    this.completed = this.completed;    
 }
 
 Book.prototype.completed = function(completed) {
