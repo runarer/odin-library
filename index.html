@@ -8,21 +8,23 @@
 </head>
 <body>
     <div class="library">
-        <form class="add-book" action="" method="post">
-            <label for="name">Name
-            <input type="text" name="name" id="name" required></label>
-            <label for="author">Author
-            <input type="text" name="author" id="author" required></label>
-            <label for="pages">Pages
-            <input type="number" name="pages" id="pages" min="1" max="2500" required></label>
-            <label for="read">Completed?
-            <input type="checkbox" name="read" id="read required"></label>
-            <div>
-                <button type="button" id="add">Add</button>
-                <button type="reset" id="cancel">Cancel</button>
-            </div>
-        </form>
-        <button type="button" id="toggle-add-book">Add Book</button>
+        <div id="test-form">
+            <form id="add-book" action="" method="post">
+                <label for="name">Name
+                <input type="text" name="name" id="name" required></label>
+                <label for="author">Author
+                <input type="text" name="author" id="author" required></label>
+                <label for="pages">Pages
+                <input type="number" name="pages" id="pages" min="1" max="2500" required></label>
+                <label for="read">Completed?
+                <input type="checkbox" name="read" id="read required"></label>
+                <div>
+                    <button type="button" id="add">Add</button>
+                    <button type="reset" id="cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <button type="button" id="show-add-book">Add Book</button>
         <table id="book-table">
             <thead>
                 <td id="header-name">Name</td>
@@ -40,5 +42,24 @@
             </tbody>
         </table>
     </div>
+    <script>
+        // const addBookForm = document.getElementById("add-book");
+        const addBookForm = document.getElementById("test-form");
+        const showBookForm = document.getElementById("show-add-book")
+        const addBookButton = document.getElementById("add");
+        const cancelBookButton = document.getElementById("cancel");
+
+        function toggleAddBook() {
+            addBookForm.hidden = !addBookForm.hidden;
+            showBookForm.hidden = !showBookForm.hidden;
+        }
+
+        addBookButton.addEventListener("click",toggleAddBook);
+        cancelBookButton.addEventListener("click",toggleAddBook);
+        showBookForm.addEventListener("click",toggleAddBook);
+
+        addBookForm.hidden = true;
+
+    </script>
 </body>
 </html>
