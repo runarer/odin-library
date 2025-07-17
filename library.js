@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title,author,pages,completed) {
     if(!new.target) {
@@ -18,6 +18,21 @@ Book.prototype.completed = function(completed) {
 function addBookToLibrary(title,author,pages,completed) {
     myLibrary.push(new Book(title,author, pages, completed));
 }
+
+function removeBookFromLibrary(id) {
+    const index = myLibrary.findIndex((book) => book.id == id);    
+    myLibrary.splice(index,1);    
+}
+
+function removeBook(id) {    
+    const bookTable = document.getElementById("book-table-content")
+    const bookRow = document.getElementById(id);
+    console.log(myLibrary)
+    removeBookFromLibrary(id);
+    console.log(myLibrary)
+    bookTable.removeChild(bookRow);
+}
+
 
 addBookToLibrary("Piranesi","Susanna Clarke", 272, false);
 addBookToLibrary("Gardens of the moon","Steven Erikson", 712, false);
@@ -63,6 +78,8 @@ myLibrary.forEach( function(book) {
     //Delete button
     const deleteBook = document.createElement("button");
     deleteBook.textContent = "\u{274C}";
+    deleteBook.addEventListener("click", () => removeBook(book.id));
+
     newRow.appendChild(deleteBook);
     
     //Add Row
