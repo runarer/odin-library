@@ -29,8 +29,6 @@ const tableContent = document.getElementById("book-table-content");
 
 myLibrary.forEach( function(book) {
     // New row
-    console.log(book);
-
     const newRow = document.createElement("tr");
 
     //Book Title
@@ -49,12 +47,9 @@ myLibrary.forEach( function(book) {
     newRow.appendChild(bookPages);
 
     // //Book completed?
-    const bookCompletedTd = document.createElement("td");
-    const bookCompleted = document.createElement("input")
-    bookCompleted.type = "checkbox";
-    // bookCompleted.value = book.completed;
-    bookCompletedTd.appendChild(bookCompleted);
-    newRow.appendChild(bookCompletedTd);
+    const bookCompleted = document.createElement("td");
+    bookCompleted.textContent = book.completed ? "Yes" : "No";
+    newRow.appendChild(bookCompleted);
     
 
     //Add Row
