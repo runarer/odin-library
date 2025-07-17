@@ -11,8 +11,8 @@ function Book(title,author,pages,completed) {
     this.completed = completed;    
 }
 
-Book.prototype.completed = function(completed) {
-    this.completed = completed;
+Book.prototype.toggleCompleted = function() {
+    this.completed = !this.completed;
 };
     
 function addBookToLibrary(title,author,pages,completed) {
@@ -33,7 +33,7 @@ function removeBook(id) {
 
 function toggleBookComplete(id) {
     const index = myLibrary.findIndex((book) => book.id == id);
-    myLibrary[index].completed = !myLibrary[index].completed;
+    myLibrary[index].toggleCompleted();
 }
 
 function addBook() {    
