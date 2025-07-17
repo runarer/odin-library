@@ -27,10 +27,13 @@ function removeBookFromLibrary(id) {
 function removeBook(id) {    
     const bookTable = document.getElementById("book-table-content")
     const bookRow = document.getElementById(id);
-    console.log(myLibrary)
     removeBookFromLibrary(id);
-    console.log(myLibrary)
     bookTable.removeChild(bookRow);
+}
+
+function toggleBookComplete(id) {
+    const index = myLibrary.findIndex((book) => book.id == id);
+    myLibrary[index].completed = !myLibrary[index].completed;
 }
 
 
@@ -70,6 +73,7 @@ myLibrary.forEach( function(book) {
     
     const bookCompleted = document.createElement("input");    
     bookCompleted.setAttribute("type","checkbox")
+    bookCompleted.addEventListener("click",() => toggleBookComplete(book.id));
     bookCompleted.checked = book.completed
     
     bookCompletedTd.appendChild(bookCompleted);    
