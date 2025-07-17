@@ -8,7 +8,7 @@ function Book(title,author,pages,completed) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.completed = this.completed;    
+    this.completed = completed;    
 }
 
 Book.prototype.completed = function(completed) {
@@ -22,6 +22,7 @@ function addBookToLibrary(title,author,pages,completed) {
 addBookToLibrary("Piranesi","Susanna Clarke", 272, false);
 addBookToLibrary("Gardens of the moon","Steven Erikson", 712, false);
 addBookToLibrary("Deadhouse gates","Steven Erikson", 943, false);
+addBookToLibrary("Crooked Kingdom","Leigh Bardugo",536,true)
 
 // Get table
 const tableContent = document.getElementById("book-table-content");
