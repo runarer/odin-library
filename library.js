@@ -31,10 +31,11 @@ const tableContent = document.getElementById("book-table-content");
 myLibrary.forEach( function(book) {
     // New row
     const newRow = document.createElement("tr");
+    newRow.setAttribute("id",book.id);
 
     //Book Title
     const bookTitle = document.createElement("td");
-    bookTitle.textContent = book.title;
+    bookTitle.textContent = book.title;    
     newRow.appendChild(bookTitle);
 
     //Book author
@@ -45,14 +46,25 @@ myLibrary.forEach( function(book) {
     //Book pages
     const bookPages = document.createElement("td");
     bookPages.textContent = book.pages;
+    bookPages.setAttribute("class","book-pages");
     newRow.appendChild(bookPages);
 
-    // //Book completed?
-    const bookCompleted = document.createElement("td");
-    bookCompleted.textContent = book.completed ? "Yes" : "No";
-    newRow.appendChild(bookCompleted);
+    //Book completed?
+    const bookCompletedTd= document.createElement("td");
+    bookCompletedTd.setAttribute("class","book-completed");
     
+    const bookCompleted = document.createElement("input");    
+    bookCompleted.setAttribute("type","checkbox")
+    bookCompleted.checked = book.completed
+    
+    bookCompletedTd.appendChild(bookCompleted);    
+    newRow.appendChild(bookCompletedTd);
 
+    //Delete button
+    const deleteBook = document.createElement("button");
+    deleteBook.textContent = "\u{274C}";
+    newRow.appendChild(deleteBook);
+    
     //Add Row
     tableContent.appendChild(newRow);
 });
