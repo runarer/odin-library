@@ -36,18 +36,34 @@ function toggleBookComplete(id) {
     myLibrary[index].completed = !myLibrary[index].completed;
 }
 
+function addBook() {    
+    const titleInput = document.getElementById("title");
+    const authorInput = document.getElementById("author");
+    const pagesInput = document.getElementById("pages");
+    const readInput = document.getElementById("read");
 
-addBookToLibrary("Piranesi","Susanna Clarke", 272, false);
-addBookToLibrary("Gardens of the moon","Steven Erikson", 712, false);
-addBookToLibrary("Deadhouse gates","Steven Erikson", 943, false);
-addBookToLibrary("Crooked Kingdom","Leigh Bardugo",536,true)
+    const title = titleInput.value;
+    const author = authorInput.value;
+    const pages = pagesInput.value;
+    const read = readInput.checked;
+
+    if(title !== "" && author !== "" && pages !== undefined && pages > 0) {        
+        const newBook = new Book(title,author,pages,read);
+        myLibrary.push(newBook);
+        addBookToTable(newBook);
+
+        // Reset
+        titleInput.value = "";
+        authorInput.value = "";
+        pagesInput.value = "";
+        readInput.checked = false;
+    }
+}
 
 // Get table
 const tableContent = document.getElementById("book-table-content");
-// console.log(tableContent);
 
-myLibrary.forEach( function(book) {
-    // New row
+function addBookToTable(book) {
     const newRow = document.createElement("tr");
     newRow.setAttribute("id",book.id);
 
@@ -88,4 +104,16 @@ myLibrary.forEach( function(book) {
     
     //Add Row
     tableContent.appendChild(newRow);
-});
+}
+
+//Add book
+const addButton = document.getElementById("add");
+addButton.addEventListener("click", () => addBook())
+
+// TEST
+addBookToLibrary("Piranesi","Susanna Clarke", 272, false);
+addBookToLibrary("Gardens of the moon","Steven Erikson", 712, false);
+addBookToLibrary("Deadhouse gates","Steven Erikson", 943, false);
+addBookToLibrary("Crooked Kingdom","Leigh Bardugo",536,true)
+
+myLibrary.map(addBookToTable);
