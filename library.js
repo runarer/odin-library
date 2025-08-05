@@ -1,19 +1,24 @@
 let myLibrary = [];
 
-function Book(title,author,pages,completed) {
-    if(!new.target) {
-        throw Error("Use the 'new' operator!");
-    }
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.completed = completed;    
-}
+class Book {
+    id;
+    title;
+    author;
+    pages;
+    completed;
 
-Book.prototype.toggleCompleted = function() {
-    this.completed = !this.completed;
-};
+    constructor(title,author,pages,completed) {
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.completed = completed;        
+    }
+
+    toggleCompleted() {
+        this.completed = !this.completed;    
+    }
+}
     
 function addBookToLibrary(title,author,pages,completed) {
     myLibrary.push(new Book(title,author, pages, completed));
